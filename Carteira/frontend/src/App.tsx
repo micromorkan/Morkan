@@ -12,13 +12,13 @@ function App() {
   const [users, setUsers] = useState<IUser[]>([]);
 
   useEffect(() => {
-    api.get<IUser[]>('/users').then(response => {
+    api.get<IUser[]>('/api/users').then(response => {
       setUsers(response.data);
     })
   }, [])
 
   return (
-    <div className="App">
+    <div className="App" style={{backgroundColor: 'red'}}>
       { users.map(user => <User key={user.email} user={user}></User>)}
     </div>
   );

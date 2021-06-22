@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Web.DBModels.Servico>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">Lista de Serviços</h1>
+
+<p class="text-center">
+    <a asp-action="Create" class="btn btn-lg btn-primary">Incluir Novo Serviço</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TransferIN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HorarioVoo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroVoo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Companhia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataVoo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Saida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QtdPassageiros)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Veiculo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataServico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataCadastro)
+            </th>
+            <th>
+                @Html.DisplayName("Ação")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransferIN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HorarioVoo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroVoo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Companhia)
+            </td>
+            <td>
+                @item.DataVoo.ToShortDateString()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Saida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QtdPassageiros)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Veiculo)
+            </td>
+            <td>
+                @item.Observacao?.Substring(0, item.Observacao.Length > 40 ? 40 : item.Observacao.Length)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+            <td>
+                @item.DataServico.ToShortDateString()
+            </td>
+            <td>
+                @item.DataCadastro.ToShortDateString()
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> <br />
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhar</a> <br />
+                <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

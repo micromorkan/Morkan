@@ -1,0 +1,93 @@
+﻿@model Web.DBModels.Servico
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Novo Serviço</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ClienteId" class="control-label"></label>
+                <select asp-for="ClienteId" class="form-control" asp-items="ViewBag.ClienteId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataServico" class="control-label"></label>
+                <input asp-for="DataServico" class="form-control maskData" type="date" />
+                <span asp-validation-for="DataServico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TransferIN" class="control-label"></label>
+                <input asp-for="TransferIN" class="form-control" />
+                <span asp-validation-for="TransferIN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HorarioVoo" class="control-label"></label>
+                <input asp-for="HorarioVoo" class="form-control maskHora" placeholder="00:00" />
+                <span asp-validation-for="HorarioVoo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumeroVoo" class="control-label"></label>
+                <input asp-for="NumeroVoo" class="form-control" />
+                <span asp-validation-for="NumeroVoo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Companhia" class="control-label"></label>
+                <input asp-for="Companhia" class="form-control text-uppercase" />
+                <span asp-validation-for="Companhia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataVoo" class="control-label"></label>
+                <input asp-for="DataVoo" class="form-control" type="date" />
+                <span asp-validation-for="DataVoo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Saida" class="control-label"></label>
+                <input asp-for="Saida" class="form-control maskHora" placeholder="00:00" />
+                <span asp-validation-for="Saida" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QtdPassageiros" class="control-label"></label>
+                <input asp-for="QtdPassageiros" class="form-control maskNum" />
+                <span asp-validation-for="QtdPassageiros" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Veiculo" class="control-label"></label>
+                <input asp-for="Veiculo" class="form-control" />
+                <span asp-validation-for="Veiculo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Valor" class="control-label"></label>
+                <input asp-for="Valor" class="form-control maskMoney" />
+                <span asp-validation-for="Valor" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Observacao" class="control-label"></label>
+                <textarea asp-for="Observacao" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Observacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" /> |
+                <a asp-action="Index" class="btn btn-warning">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script>
+    $(document).ready(function () {
+        $(".maskHora").mask("99:99");
+        $(".maskData").mask("99/99/9999");
+        $(".maskNum").mask("99");
+        $(".maskMoney").maskMoney({ prefix: "R$ ", decimal: ",", thousands: "." });
+    });
+</script>
+}

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Web.DBModels.Servico>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <div class="text-center">
+        <h2>
+            Serviços do dia
+        </h2>
+    </div>
+    <br />
+    @foreach (var item in Model)
+    {
+        <div class="card" style="width: 100%; box-shadow: 0 0 10px 0 rgba(100, 100, 100, 0.50);">
+            <div class="card-body">
+                <h5 class="card-title">@item.Cliente.Nome</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@item.TransferIN - (@item.Companhia)</h6>
+                <p class="card-subtitle mb-2 text-muted">Nº Passageiros: @item.QtdPassageiros, Horário: @item.HorarioVoo, Nº:@item.NumeroVoo </p>
+                <p class="card-text">Observação: @item.Observacao</p>
+                <a href="#" class="card-link">Alterar Data</a>
+            </div>
+        </div>
+        <br />
+    }
+</div>
