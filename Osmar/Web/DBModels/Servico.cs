@@ -17,6 +17,10 @@ namespace Web.DBModels
         [Column("clienteid")]
         public int ClienteId { get; set; }
 
+        [ForeignKey("Agencia")]
+        [Column("agenciaid")]
+        public int AgenciaId { get; set; }
+
         [Column("transferin")]
         public string TransferIN { get; set; }
 

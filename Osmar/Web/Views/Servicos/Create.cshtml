@@ -12,26 +12,30 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="ClienteId" class="control-label"></label>
+                <label asp-for="ClienteId" class="control-label">Cliente</label>
                 <select asp-for="ClienteId" class="form-control" asp-items="ViewBag.ClienteId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="DataServico" class="control-label"></label>
+                <label asp-for="AgenciaId" class="control-label">Agência</label>
+                <select asp-for="AgenciaId" class="form-control" asp-items="ViewBag.AgenciaId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataServico" class="control-label">Data Serviço</label>
                 <input asp-for="DataServico" class="form-control maskData" type="date" />
                 <span asp-validation-for="DataServico" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TransferIN" class="control-label"></label>
+                <label asp-for="TransferIN" class="control-label">Transfer IN</label>
                 <input asp-for="TransferIN" class="form-control" />
                 <span asp-validation-for="TransferIN" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="HorarioVoo" class="control-label"></label>
+                <label asp-for="HorarioVoo" class="control-label">Horário Vôo</label>
                 <input asp-for="HorarioVoo" class="form-control maskHora" placeholder="00:00" />
                 <span asp-validation-for="HorarioVoo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NumeroVoo" class="control-label"></label>
+                <label asp-for="NumeroVoo" class="control-label">Número Vôo</label>
                 <input asp-for="NumeroVoo" class="form-control" />
                 <span asp-validation-for="NumeroVoo" class="text-danger"></span>
             </div>
@@ -41,17 +45,17 @@
                 <span asp-validation-for="Companhia" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DataVoo" class="control-label"></label>
+                <label asp-for="DataVoo" class="control-label">Data Vôo</label>
                 <input asp-for="DataVoo" class="form-control" type="date" />
                 <span asp-validation-for="DataVoo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Saida" class="control-label"></label>
+                <label asp-for="Saida" class="control-label">Saída</label>
                 <input asp-for="Saida" class="form-control maskHora" placeholder="00:00" />
                 <span asp-validation-for="Saida" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="QtdPassageiros" class="control-label"></label>
+                <label asp-for="QtdPassageiros" class="control-label">Qtd Passageiros</label>
                 <input asp-for="QtdPassageiros" class="form-control maskNum" />
                 <span asp-validation-for="QtdPassageiros" class="text-danger"></span>
             </div>
@@ -67,7 +71,7 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="Observacao" class="control-label"></label>
+                <label asp-for="Observacao" class="control-label">Observação</label>
                 <textarea asp-for="Observacao" class="form-control" rows="5"></textarea>
                 <span asp-validation-for="Observacao" class="text-danger"></span>
             </div>

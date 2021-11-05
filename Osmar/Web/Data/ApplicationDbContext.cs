@@ -13,7 +13,9 @@ namespace Web.Data
             : base(options)
         {
         }
+
         public DbSet<Web.DBModels.Cliente> Cliente { get; set; }
         public DbSet<Web.DBModels.Servico> Servico { get; set; }
+        public DbSet<Web.DBModels.Agencia> Agencia { get; set; }
     }
 }

@@ -59,12 +59,13 @@ namespace Web.Controllers
         public IActionResult Create()
         {
             ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Nome");
+            ViewData["AgenciaId"] = new SelectList(_context.Agencia, "Id", "Nome");
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ClienteId,TransferIN,HorarioVoo,NumeroVoo,Companhia,DataVoo,Saida,QtdPassageiros,Veiculo,Observacao,Valor,DataServico")] Servico servico)
+        public async Task<IActionResult> Create([Bind("Id,ClienteId,AgenciaId,TransferIN,HorarioVoo,NumeroVoo,Companhia,DataVoo,Saida,QtdPassageiros,Veiculo,Observacao,Valor,DataServico")] Servico servico)
         {
             if (ModelState.IsValid)
             {

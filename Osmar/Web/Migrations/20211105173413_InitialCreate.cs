@@ -1,13 +1,27 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
+using MySql.Data.EntityFrameworkCore.Metadata;
 
-namespace Web.Data.Migrations
+namespace Web.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Agencia",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    nome = table.Column<string>(nullable: false),
+                    telefone = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Agencia", x => x.id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -48,11 +62,28 @@ namespace Web.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Cliente",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    nome = table.Column<string>(nullable: false),
+                    cpf = table.Column<string>(nullable: false),
+                    email = table.Column<string>(nullable: true),
+                    telefone1 = table.Column<string>(nullable: true),
+                    telefone2 = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cliente", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -73,7 +104,7 @@ namespace Web.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -113,8 +144,8 @@ namespace Web.Data.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(nullable: false),
-                    RoleId = table.Column<string>(nullable: false)
+                    UserId = table.Column<string>(nullable: false, maxLength: 100),
+                    RoleId = table.Column<string>(nullable: false, maxLength: 100)
                 },
                 constraints: table =>
                 {
@@ -153,6 +184,44 @@ namespace Web.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Servico",
+                columns: table => new
+                {
+                    id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    clienteid = table.Column<int>(nullable: false),
+                    agenciaid = table.Column<int>(nullable: false),
+                    transferin = table.Column<string>(nullable: true),
+                    horariovoo = table.Column<string>(nullable: true),
+                    numerovoo = table.Column<string>(nullable: true),
+                    companhia = table.Column<string>(nullable: true),
+                    datavoo = table.Column<DateTime>(nullable: false),
+                    saida = table.Column<string>(nullable: true),
+                    qtdpassageiros = table.Column<string>(nullable: true),
+                    veiculo = table.Column<string>(nullable: true),
+                    observacao = table.Column<string>(nullable: true),
+                    valor = table.Column<string>(nullable: true),
+                    dataservico = table.Column<DateTime>(nullable: false),
+                    datacadastro = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Servico", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Servico_Cliente_clienteid",
+                        column: x => x.clienteid,
+                        principalTable: "Cliente",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Servico_Agencia_agenciaid",
+                        column: x => x.agenciaid,
+                        principalTable: "Agencia",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -162,8 +231,7 @@ namespace Web.Data.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true,
-                filter: "[NormalizedName] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -189,12 +257,19 @@ namespace Web.Data.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true,
-                filter: "[NormalizedUserName] IS NOT NULL");
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Servico_clienteid",
+                table: "Servico",
+                column: "clienteid");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Agencia");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -211,10 +286,16 @@ namespace Web.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Servico");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Cliente");
         }
     }
 }

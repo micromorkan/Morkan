@@ -496,3 +496,8 @@ D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\Rotativa.AspNetCore.dll
 D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\web.config
 D:\Morkan\Osmar\Web\obj\Debug\netcoreapp3.1\Web.csprojAssemblyReference.cache
+D:\Morkan\Osmar\Web\obj\Debug\netcoreapp3.1\Razor\Views\Agencias\Create.cshtml.g.cs
+D:\Morkan\Osmar\Web\obj\Debug\netcoreapp3.1\Razor\Views\Agencias\Delete.cshtml.g.cs
+D:\Morkan\Osmar\Web\obj\Debug\netcoreapp3.1\Razor\Views\Agencias\Details.cshtml.g.cs
+D:\Morkan\Osmar\Web\obj\Debug\netcoreapp3.1\Razor\Views\Agencias\Edit.cshtml.g.cs
+D:\Morkan\Osmar\Web\obj\Debug\netcoreapp3.1\Razor\Views\Agencias\Index.cshtml.g.cs
