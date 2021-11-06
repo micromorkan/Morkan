@@ -33,8 +33,8 @@ namespace Web.Controllers
                 return NotFound();
             }
 
-            var agencia = await _context.Agencia
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var agencia = await _context.Agencia.FirstOrDefaultAsync(m => m.Id == id);
+
             if (agencia == null)
             {
                 return NotFound();
@@ -49,15 +49,16 @@ namespace Web.Controllers
             return View();
         }
 
-        // POST: Agencias/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome,Telefone")] Agencia agencia)
         {
-            if (ModelState.IsValid)
+            if (string.IsNullOrWhiteSpace(agencia.Nome))
             {
+                ModelState.AddModelError("Nome", "O campo Nome é obrigatório!");
+            }
+            else 
+            { 
                 _context.Add(agencia);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -92,8 +93,15 @@ namespace Web.Controllers
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
+            else if (string.IsNullOrWhiteSpace(agencia.Nome))
+            {
+                ModelState.AddModelError("Nome", "O campo Nome é obrigatório!");
+            }
+            else if (AgenciaNameExists(agencia.Id, agencia.Nome))
+            {
+                ModelState.AddModelError("Nome", "O Nome informado já está cadastrado!");
+            }
+            else
             {
                 try
                 {
@@ -148,6 +156,11 @@ namespace Web.Controllers
         private bool AgenciaExists(int id)
         {
             return _context.Agencia.Any(e => e.Id == id);
+        }
+
+        private bool AgenciaNameExists(int id, string nome)
+        {
+            return _context.Agencia.Any(e => e.Id != id && e.Nome.ToUpper() == nome.ToUpper());
         }
     }
 }

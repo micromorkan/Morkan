@@ -7,17 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="wwwroot\rotativa\**" />
-    <Content Remove="wwwroot\rotativa\**" />
-    <EmbeddedResource Remove="wwwroot\rotativa\**" />
-    <None Remove="wwwroot\rotativa\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Remove="wwwroot\Images\logo.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="HiQPdf.Free.NetCore" Version="12.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.14" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.15" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.15" />
@@ -32,7 +26,7 @@
     <PackageReference Include="MySql.Data" Version="8.0.25" />
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.22" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.Design" Version="1.1.2" />
-    <PackageReference Include="Rotativa.AspNetCore" Version="1.1.1" />
+    <PackageReference Include="Rotativa.AspNetCore" Version="1.2.0" />
     <PackageReference Include="Wkhtmltopdf.NetCore" Version="3.0.2" />
   </ItemGroup>
 
@@ -42,6 +36,7 @@
 
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
+    <Folder Include="wwwroot\rotativa\" />
   </ItemGroup>
 
 </Project>

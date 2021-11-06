@@ -19,7 +19,8 @@
                 <h6 class="card-subtitle mb-2 text-muted">@item.TransferIN - (@item.Companhia)</h6>
                 <p class="card-subtitle mb-2 text-muted">Nº Passageiros: @item.QtdPassageiros, Horário: @item.HorarioVoo, Nº:@item.NumeroVoo </p>
                 <p class="card-text">Observação: @item.Observacao</p>
-                <a href="#" class="card-link">Alterar Data</a>
+                <a asp-controller="Servicos" asp-action="Edit" asp-route-id="@item.Id" class="card-link">Alterar Data</a>
+                <a asp-controller="Servicos" asp-action="Pdf" asp-route-id="@item.Id" target="_blank" class="card-link" style="float: right">Gerar Voucher</a>
             </div>
         </div>
         <br />

@@ -205,7 +205,6 @@ D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\refs\System.Reflection.TypeExtension
 D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\refs\System.Resources.Reader.dll
 D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\refs\System.Resources.ResourceManager.dll
 D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\refs\System.Resources.Writer.dll
-D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\refs\System.Runtime.CompilerServices.Unsafe.dll
 D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\refs\System.Runtime.CompilerServices.VisualC.dll
 D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\refs\System.Runtime.dll
 D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\refs\System.Runtime.Extensions.dll
@@ -233,11 +232,9 @@ D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\refs\System.Security.Cryptography.Xm
 D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\refs\System.Security.dll
 D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\refs\System.Security.Permissions.dll
 D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\refs\System.Security.Principal.dll
-D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\refs\System.Security.Principal.Windows.dll
 D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\refs\System.Security.SecureString.dll
 D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\refs\System.ServiceModel.Web.dll
 D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\refs\System.ServiceProcess.dll
-D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\refs\System.Text.Encoding.CodePages.dll
 D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\refs\System.Text.Encoding.dll
 D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\refs\System.Text.Encoding.Extensions.dll
 D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\refs\System.Text.Encodings.Web.dll
@@ -501,3 +498,17 @@ D:\Morkan\Osmar\Web\obj\Debug\netcoreapp3.1\Razor\Views\Agencias\Delete.cshtml.g
 D:\Morkan\Osmar\Web\obj\Debug\netcoreapp3.1\Razor\Views\Agencias\Details.cshtml.g.cs
 D:\Morkan\Osmar\Web\obj\Debug\netcoreapp3.1\Razor\Views\Agencias\Edit.cshtml.g.cs
 D:\Morkan\Osmar\Web\obj\Debug\netcoreapp3.1\Razor\Views\Agencias\Index.cshtml.g.cs
+D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\HiQPdf.dep
+D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\HiQPdf.Free.NetCore.dll
+D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\System.Security.Principal.Windows.dll
+D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
+D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
+D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
+D:\Morkan\Osmar\Web\obj\Debug\netcoreapp3.1\Razor\Views\Servicos\Pdf - Copy.cshtml.g.cs

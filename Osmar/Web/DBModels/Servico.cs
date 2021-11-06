@@ -58,5 +58,7 @@ namespace Web.DBModels
         public DateTime DataCadastro { get; set; }
 
         public Cliente Cliente { get; set; }
+
+        public Agencia Agencia { get; set; }
     }
 }

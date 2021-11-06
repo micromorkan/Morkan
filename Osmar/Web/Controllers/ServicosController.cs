@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Authorization;
 using Web.Business;
 using Web.Business.Interface;
 using Wkhtmltopdf.NetCore;
+using HiQPdf;
+using System.IO;
 
 namespace Web.Controllers
 {
@@ -20,10 +22,12 @@ namespace Web.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IGeneratePdf _generatePdf;
-        public ServicosController(IGeneratePdf reportService, ApplicationDbContext context)
+        private readonly IRazorPartialToStringRenderer _renderer;
+        public ServicosController(IGeneratePdf reportService, ApplicationDbContext context, IRazorPartialToStringRenderer renderer)
         {
             _context = context;
             _generatePdf = reportService;
+            _renderer = renderer;
         }
 
         [HttpGet]
@@ -67,13 +71,22 @@ namespace Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,ClienteId,AgenciaId,TransferIN,HorarioVoo,NumeroVoo,Companhia,DataVoo,Saida,QtdPassageiros,Veiculo,Observacao,Valor,DataServico")] Servico servico)
         {
-            if (ModelState.IsValid)
+            if (servico.DataServico.Date < DateTime.Now.Date)
+            {
+                ModelState.AddModelError("DataServico", "A Data do Serviço não pode ser inferior a data atual!");
+            }
+            else if (servico.DataVoo.Date < DateTime.Now.Date)
+            {
+                ModelState.AddModelError("DataVoo", "A Data do Vôo não pode ser inferior a data atual!");
+            }
+            else
             {
                 servico.DataCadastro = DateTime.Now.Date;
                 _context.Add(servico);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Cpf", servico.ClienteId);
             return View(servico);
         }
@@ -155,6 +168,33 @@ namespace Web.Controllers
             _context.Servico.Remove(servico);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Pdf(int? id)
+        {
+            if (id.HasValue)
+            {
+                Servico servico = await _context.Servico.FindAsync(id);
+                servico.Agencia = await _context.Agencia.FindAsync(servico.AgenciaId);
+                servico.Cliente = await _context.Cliente.FindAsync(servico.ClienteId);
+
+                HtmlToPdf htmlToPdfConverter = new HtmlToPdf();
+                htmlToPdfConverter.Document.PageOrientation = PdfPageOrientation.Portrait;
+
+                string htmlToConvert = await _renderer.RenderPartialToStringAsync("Servicos/Pdf", servico);
+
+                byte[] pdfBuffer = htmlToPdfConverter.ConvertHtmlToMemory(htmlToConvert, $"{ this.Request.Scheme}://{this.Request.Host}");
+
+                Response.Headers.Add("Content-Disposition", "inline; filename=document.pdf");
+                Response.ContentType = "application/pdf";
+                Response.ContentLength = pdfBuffer.Length;
+
+                return new FileContentResult(pdfBuffer, "application/pdf");
+            }
+            else
+            {
+                return new FileContentResult(new byte[0], "application/pdf");
+            }
         }
 
         private bool ServicoExists(int id)

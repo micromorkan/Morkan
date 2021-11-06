@@ -39,6 +39,7 @@ namespace Web
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            services.AddTransient<IRazorPartialToStringRenderer, RazorPartialToStringRenderer>();
 
             services.AddWkhtmltopdf();
             //services.AddScoped<IReportService, ReportService>();

@@ -60,6 +60,10 @@ namespace Web.Controllers
             {
                 ModelState.AddModelError("Cpf", "O campo Cpf é obrigatório!");
             }
+            else if (ClienteCpfExists(cliente.Cpf))
+            {
+                ModelState.AddModelError("Cpf", "O Cpf informado já está em uso!");
+            }
             else if (string.IsNullOrWhiteSpace(cliente.Telefone1))
             {
                 ModelState.AddModelError("Telefone1", "O campo Telefone1 é obrigatório!");
@@ -70,6 +74,7 @@ namespace Web.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             return View(cliente);
         }
 
@@ -85,6 +90,7 @@ namespace Web.Controllers
             {
                 return NotFound();
             }
+
             return View(cliente);
         }
 
@@ -104,6 +110,10 @@ namespace Web.Controllers
             else if (string.IsNullOrWhiteSpace(cliente.Cpf))
             {
                 ModelState.AddModelError("Cpf", "O campo Cpf é obrigatório!");
+            }
+            else if (ClienteCpfInUse(cliente.Id, cliente.Cpf))
+            {
+                ModelState.AddModelError("Cpf", "O Cpf informado já está em uso!");
             }
             else if (string.IsNullOrWhiteSpace(cliente.Telefone1))
             {
@@ -129,6 +139,7 @@ namespace Web.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
             return View(cliente);
         }
 
@@ -164,6 +175,16 @@ namespace Web.Controllers
         private bool ClienteExists(int id)
         {
             return _context.Cliente.Any(e => e.Id == id);
+        }
+
+        private bool ClienteCpfInUse(int id, string cpf)
+        {
+            return _context.Cliente.Any(e => e.Id != id && e.Cpf == cpf);
+        }
+
+        private bool ClienteCpfExists(string cpf)
+        {
+            return _context.Cliente.Any(e => e.Cpf == cpf);
         }
     }
 }
