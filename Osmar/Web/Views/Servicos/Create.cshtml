@@ -21,46 +21,80 @@
             </div>
             <div class="form-group">
                 <label asp-for="DataServico" class="control-label">Data Serviço</label>
-                <input asp-for="DataServico" class="form-control maskData" type="date" />
+                <input asp-for="DataServico" class="form-control" type="date" />
                 <span asp-validation-for="DataServico" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="TransferIN" class="control-label">Transfer IN</label>
-                <input asp-for="TransferIN" class="form-control" />
-                <span asp-validation-for="TransferIN" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HorarioVoo" class="control-label">Horário Vôo</label>
-                <input asp-for="HorarioVoo" class="form-control maskHora" placeholder="00:00" />
-                <span asp-validation-for="HorarioVoo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NumeroVoo" class="control-label">Número Vôo</label>
-                <input asp-for="NumeroVoo" class="form-control" />
-                <span asp-validation-for="NumeroVoo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Companhia" class="control-label"></label>
-                <input asp-for="Companhia" class="form-control text-uppercase" />
-                <span asp-validation-for="Companhia" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataVoo" class="control-label">Data Vôo</label>
-                <input asp-for="DataVoo" class="form-control" type="date" />
-                <span asp-validation-for="DataVoo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Saida" class="control-label">Saída</label>
-                <input asp-for="Saida" class="form-control maskHora" placeholder="00:00" />
-                <span asp-validation-for="Saida" class="text-danger"></span>
-            </div>
+            <br />
+            <fieldset>
+                <legend>Transfer IN:</legend>
+                <div class="form-group">
+                    <label asp-for="TransferIN" class="control-label">Transfer IN</label>
+                    <input asp-for="TransferIN" class="form-control" />
+                    <span asp-validation-for="TransferIN" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HorarioVooIn" class="control-label">Horário Vôo IN</label>
+                    <input asp-for="HorarioVooIn" class="form-control maskHora" placeholder="00:00" />
+                    <span asp-validation-for="HorarioVooIn" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NumeroVooIn" class="control-label">Número Vôo IN</label>
+                    <input asp-for="NumeroVooIn" class="form-control" />
+                    <span asp-validation-for="NumeroVooIn" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CompanhiaIn" class="control-label">Companhia IN</label>
+                    <input asp-for="CompanhiaIn" class="form-control text-uppercase" />
+                    <span asp-validation-for="CompanhiaIn" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DataVooIn" class="control-label">Data Vôo IN</label>
+                    <input asp-for="DataVooIn" class="form-control" type="date" />
+                    <span asp-validation-for="DataVooIn" class="text-danger"></span>
+                </div>
+            </fieldset>
+            <br />
+            <fieldset>
+                <legend>Transfer OUT:</legend>
+                <div class="form-group">
+                    <label asp-for="TransferOut" class="control-label">Transfer OUT</label>
+                    <input asp-for="TransferOut" class="form-control" />
+                    <span asp-validation-for="TransferOut" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HorarioVooOut" class="control-label">Horário Vôo OUT</label>
+                    <input asp-for="HorarioVooOut" class="form-control maskHora" placeholder="00:00" />
+                    <span asp-validation-for="HorarioVooOut" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NumeroVooOut" class="control-label">Número Vôo OUT</label>
+                    <input asp-for="NumeroVooOut" class="form-control" />
+                    <span asp-validation-for="NumeroVooOut" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CompanhiaOut" class="control-label">Companhia OUT</label>
+                    <input asp-for="CompanhiaOut" class="form-control text-uppercase" />
+                    <span asp-validation-for="CompanhiaOut" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DataVooOut" class="control-label">Data Vôo OUT</label>
+                    <input asp-for="DataVooOut" class="form-control" type="date" />
+                    <span asp-validation-for="DataVooOut" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SaidaHotelOut" class="control-label">Saída Hotel</label>
+                    <input asp-for="SaidaHotelOut" class="form-control maskHora" placeholder="00:00" />
+                    <span asp-validation-for="SaidaHotelOut" class="text-danger"></span>
+                </div>
+            </fieldset>
+            <br />
             <div class="form-group">
                 <label asp-for="QtdPassageiros" class="control-label">Qtd Passageiros</label>
                 <input asp-for="QtdPassageiros" class="form-control maskNum" />
                 <span asp-validation-for="QtdPassageiros" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Veiculo" class="control-label"></label>
+                <label asp-for="Veiculo" class="control-label">Veículo</label>
                 <input asp-for="Veiculo" class="form-control" />
                 <span asp-validation-for="Veiculo" class="text-danger"></span>
             </div>

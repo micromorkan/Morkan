@@ -220,6 +220,10 @@ namespace Web.Migrations
                         .HasColumnName("id")
                         .HasColumnType("int");
 
+                    b.Property<string>("Email")
+                        .HasColumnName("email")
+                        .HasColumnType("text");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnName("nome")
@@ -241,11 +245,6 @@ namespace Web.Migrations
                         .HasColumnName("id")
                         .HasColumnType("int");
 
-                    b.Property<string>("Cpf")
-                        .IsRequired()
-                        .HasColumnName("cpf")
-                        .HasColumnType("text");
-
                     b.Property<string>("Email")
                         .HasColumnName("email")
                         .HasColumnType("text");
@@ -255,12 +254,8 @@ namespace Web.Migrations
                         .HasColumnName("nome")
                         .HasColumnType("text");
 
-                    b.Property<string>("Telefone1")
-                        .HasColumnName("telefone1")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Telefone2")
-                        .HasColumnName("telefone2")
+                    b.Property<string>("Telefone")
+                        .HasColumnName("telefone")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -283,8 +278,12 @@ namespace Web.Migrations
                         .HasColumnName("clienteid")
                         .HasColumnType("int");
 
-                    b.Property<string>("Companhia")
-                        .HasColumnName("companhia")
+                    b.Property<string>("CompanhiaIn")
+                        .HasColumnName("companhiain")
+                        .HasColumnType("text");
+
+                    b.Property<string>("CompanhiaOut")
+                        .HasColumnName("companhiaout")
                         .HasColumnType("text");
 
                     b.Property<DateTime>("DataCadastro")
@@ -295,16 +294,28 @@ namespace Web.Migrations
                         .HasColumnName("dataservico")
                         .HasColumnType("datetime");
 
-                    b.Property<DateTime>("DataVoo")
+                    b.Property<DateTime>("DataVooIn")
                         .HasColumnName("datavoo")
                         .HasColumnType("datetime");
 
-                    b.Property<string>("HorarioVoo")
-                        .HasColumnName("horariovoo")
+                    b.Property<DateTime>("DataVooOut")
+                        .HasColumnName("datavooout")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("HorarioVooIn")
+                        .HasColumnName("horariovooin")
                         .HasColumnType("text");
 
-                    b.Property<string>("NumeroVoo")
-                        .HasColumnName("numerovoo")
+                    b.Property<string>("HorarioVooOut")
+                        .HasColumnName("horariovooout")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NumeroVooIn")
+                        .HasColumnName("numerovooin")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NumeroVooOut")
+                        .HasColumnName("numerovooout")
                         .HasColumnType("text");
 
                     b.Property<string>("Observacao")
@@ -315,12 +326,16 @@ namespace Web.Migrations
                         .HasColumnName("qtdpassageiros")
                         .HasColumnType("text");
 
-                    b.Property<string>("Saida")
-                        .HasColumnName("saida")
+                    b.Property<string>("SaidaHotelOut")
+                        .HasColumnName("saidahotelout")
                         .HasColumnType("text");
 
                     b.Property<string>("TransferIN")
                         .HasColumnName("transferin")
+                        .HasColumnType("text");
+
+                    b.Property<string>("TransferOut")
+                        .HasColumnName("transferout")
                         .HasColumnType("text");
 
                     b.Property<string>("Valor")
@@ -332,6 +347,8 @@ namespace Web.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AgenciaId");
 
                     b.HasIndex("ClienteId");
 
@@ -391,6 +408,12 @@ namespace Web.Migrations
 
             modelBuilder.Entity("Web.DBModels.Servico", b =>
                 {
+                    b.HasOne("Web.DBModels.Agencia", "Agencia")
+                        .WithMany()
+                        .HasForeignKey("AgenciaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Web.DBModels.Cliente", "Cliente")
                         .WithMany()
                         .HasForeignKey("ClienteId")

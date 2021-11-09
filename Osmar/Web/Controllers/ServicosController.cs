@@ -14,6 +14,7 @@ using Web.Business.Interface;
 using Wkhtmltopdf.NetCore;
 using HiQPdf;
 using System.IO;
+using Web.ViewModels;
 
 namespace Web.Controllers
 {
@@ -39,7 +40,24 @@ namespace Web.Controllers
         public async Task<IActionResult> Index()
         {           
             var applicationDbContext = _context.Servico.Include(s => s.Cliente);
-            return View(await applicationDbContext.Where(x => x.DataServico.Date >= DateTime.Now.Date).OrderBy(o => o.DataServico).ToListAsync());
+
+            ServicoVM vm = new ServicoVM();
+            vm.FiltroDataDe = DateTime.Now.Date;
+            vm.FiltroDataAte = DateTime.Now.AddDays(7).Date;
+            vm.Servicos = await applicationDbContext.Where(x => x.DataServico.Date >= vm.FiltroDataDe && x.DataServico.Date <= vm.FiltroDataAte.Date).OrderBy(o => o.DataServico).ToListAsync();
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Index(ServicoVM vm)
+        {
+            var applicationDbContext = _context.Servico.Include(s => s.Cliente);
+
+            vm.Servicos = await applicationDbContext.Where(x => x.DataServico.Date >= vm.FiltroDataDe && x.DataServico.Date <= vm.FiltroDataAte.Date).OrderBy(o => o.DataServico).ToListAsync();
+
+            return View(vm);
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -69,13 +87,13 @@ namespace Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ClienteId,AgenciaId,TransferIN,HorarioVoo,NumeroVoo,Companhia,DataVoo,Saida,QtdPassageiros,Veiculo,Observacao,Valor,DataServico")] Servico servico)
+        public async Task<IActionResult> Create([Bind("Id,ClienteId,AgenciaId,TransferIN,HorarioVooIn,NumeroVooIn,CompanhiaIn,DataVooIn,TransferOut,HorarioVooOut,NumeroVooOut,CompanhiaOut,DataVooOut,SaidaHotelOut,QtdPassageiros,Veiculo,Observacao,Valor,DataServico")] Servico servico)
         {
             if (servico.DataServico.Date < DateTime.Now.Date)
             {
                 ModelState.AddModelError("DataServico", "A Data do Serviço não pode ser inferior a data atual!");
             }
-            else if (servico.DataVoo.Date < DateTime.Now.Date)
+            else if (servico.DataVooOut.Date < DateTime.Now.Date)
             {
                 ModelState.AddModelError("DataVoo", "A Data do Vôo não pode ser inferior a data atual!");
             }
@@ -103,13 +121,16 @@ namespace Web.Controllers
             {
                 return NotFound();
             }
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Cpf", servico.ClienteId);
+
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Nome", servico.ClienteId);
+            ViewData["AgenciaId"] = new SelectList(_context.Agencia, "Id", "Nome");
+
             return View(servico);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ClienteId,TransferIN,HorarioVoo,NumeroVoo,Companhia,DataVoo,Saida,QtdPassageiros,Veiculo,Observacao,Valor,DataServico,DataCadastro")] Servico servico)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ClienteId,AgenciaId,TransferIN,HorarioVooIn,NumeroVooIn,CompanhiaIn,DataVooIn,TransferOut,HorarioVooOut,NumeroVooOut,CompanhiaOut,DataVooOut,SaidaHotelOut,QtdPassageiros,Veiculo,Observacao,Valor,DataServico,DataCadastro")] Servico servico)
         {
             if (id != servico.Id)
             {

@@ -19,5 +19,8 @@ namespace Web.DBModels
 
         [Column("telefone")]
         public string Telefone { get; set; }
+
+        [Column("email")]
+        public string Email { get; set; }
     }
 }

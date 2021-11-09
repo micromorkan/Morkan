@@ -50,23 +50,15 @@ namespace Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Cpf,Email,Telefone1,Telefone2")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Email,Telefone")] Cliente cliente)
         {
             if (string.IsNullOrWhiteSpace(cliente.Nome))
             {
                 ModelState.AddModelError("Nome", "O campo Nome é obrigatório!");
-            }
-            else if (string.IsNullOrWhiteSpace(cliente.Cpf))
+            }            
+            else if (string.IsNullOrWhiteSpace(cliente.Telefone))
             {
-                ModelState.AddModelError("Cpf", "O campo Cpf é obrigatório!");
-            }
-            else if (ClienteCpfExists(cliente.Cpf))
-            {
-                ModelState.AddModelError("Cpf", "O Cpf informado já está em uso!");
-            }
-            else if (string.IsNullOrWhiteSpace(cliente.Telefone1))
-            {
-                ModelState.AddModelError("Telefone1", "O campo Telefone1 é obrigatório!");
+                ModelState.AddModelError("Telefone1", "O campo Telefone é obrigatório!");
             }
             else
             {
@@ -96,7 +88,7 @@ namespace Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Cpf,Email,Telefone1,Telefone2")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Email,Telefone")] Cliente cliente)
         {
             if (id != cliente.Id)
             {
@@ -106,18 +98,10 @@ namespace Web.Controllers
             if (string.IsNullOrWhiteSpace(cliente.Nome))
             {
                 ModelState.AddModelError("Nome", "O campo Nome é obrigatório!");
-            }
-            else if (string.IsNullOrWhiteSpace(cliente.Cpf))
+            }            
+            else if (string.IsNullOrWhiteSpace(cliente.Telefone))
             {
-                ModelState.AddModelError("Cpf", "O campo Cpf é obrigatório!");
-            }
-            else if (ClienteCpfInUse(cliente.Id, cliente.Cpf))
-            {
-                ModelState.AddModelError("Cpf", "O Cpf informado já está em uso!");
-            }
-            else if (string.IsNullOrWhiteSpace(cliente.Telefone1))
-            {
-                ModelState.AddModelError("Telefone1", "O campo Telefone1 é obrigatório!");
+                ModelState.AddModelError("Telefone1", "O campo Telefone é obrigatório!");
             }
             else
             {
@@ -177,14 +161,14 @@ namespace Web.Controllers
             return _context.Cliente.Any(e => e.Id == id);
         }
 
-        private bool ClienteCpfInUse(int id, string cpf)
-        {
-            return _context.Cliente.Any(e => e.Id != id && e.Cpf == cpf);
-        }
+        //private bool ClienteCpfInUse(int id, string cpf)
+        //{
+        //    return _context.Cliente.Any(e => e.Id != id && e.Cpf == cpf);
+        //}
 
-        private bool ClienteCpfExists(string cpf)
-        {
-            return _context.Cliente.Any(e => e.Cpf == cpf);
-        }
+        //private bool ClienteCpfExists(string cpf)
+        //{
+        //    return _context.Cliente.Any(e => e.Cpf == cpf);
+        //}
     }
 }

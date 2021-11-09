@@ -1,7 +1,7 @@
 ﻿@model Web.DBModels.Servico
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,54 +13,92 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="ClienteId" class="control-label"></label>
+                <label asp-for="ClienteId" class="control-label">Cliente</label>
                 <select asp-for="ClienteId" class="form-control" asp-items="ViewBag.ClienteId"></select>
                 <span asp-validation-for="ClienteId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TransferIN" class="control-label"></label>
-                <input asp-for="TransferIN" class="form-control" />
-                <span asp-validation-for="TransferIN" class="text-danger"></span>
+                <label asp-for="AgenciaId" class="control-label">Agência</label>
+                <select asp-for="AgenciaId" class="form-control" asp-items="ViewBag.AgenciaId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="HorarioVoo" class="control-label"></label>
-                <input asp-for="HorarioVoo" class="form-control" />
-                <span asp-validation-for="HorarioVoo" class="text-danger"></span>
+                <label asp-for="DataServico" class="control-label">Data Serviço</label>
+                <input asp-for="DataServico" class="form-control" type="date" />
+                <span asp-validation-for="DataServico" class="text-danger"></span>
             </div>
+            <br />
+            <fieldset>
+                <legend>Transfer IN:</legend>
+                <div class="form-group">
+                    <label asp-for="TransferIN" class="control-label">Transfer IN</label>
+                    <input asp-for="TransferIN" class="form-control" />
+                    <span asp-validation-for="TransferIN" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HorarioVooIn" class="control-label">Horário Vôo IN</label>
+                    <input asp-for="HorarioVooIn" class="form-control maskHora" placeholder="00:00" />
+                    <span asp-validation-for="HorarioVooIn" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NumeroVooIn" class="control-label">Número Vôo IN</label>
+                    <input asp-for="NumeroVooIn" class="form-control" />
+                    <span asp-validation-for="NumeroVooIn" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CompanhiaIn" class="control-label">Companhia IN</label>
+                    <input asp-for="CompanhiaIn" class="form-control text-uppercase" />
+                    <span asp-validation-for="CompanhiaIn" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DataVooIn" class="control-label">Data Vôo IN</label>
+                    <input asp-for="DataVooIn" class="form-control" type="date" />
+                    <span asp-validation-for="DataVooIn" class="text-danger"></span>
+                </div>
+            </fieldset>
+            <br />
+            <fieldset>
+                <legend>Transfer OUT:</legend>
+                <div class="form-group">
+                    <label asp-for="TransferOut" class="control-label">Transfer OUT</label>
+                    <input asp-for="TransferOut" class="form-control" />
+                    <span asp-validation-for="TransferOut" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HorarioVooOut" class="control-label">Horário Vôo OUT</label>
+                    <input asp-for="HorarioVooOut" class="form-control maskHora" placeholder="00:00" />
+                    <span asp-validation-for="HorarioVooOut" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NumeroVooOut" class="control-label">Número Vôo OUT</label>
+                    <input asp-for="NumeroVooOut" class="form-control" />
+                    <span asp-validation-for="NumeroVooOut" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CompanhiaOut" class="control-label">Companhia OUT</label>
+                    <input asp-for="CompanhiaOut" class="form-control text-uppercase" />
+                    <span asp-validation-for="CompanhiaOut" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DataVooOut" class="control-label">Data Vôo OUT</label>
+                    <input asp-for="DataVooOut" class="form-control" type="date" />
+                    <span asp-validation-for="DataVooOut" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SaidaHotelOut" class="control-label">Saída Hotel</label>
+                    <input asp-for="SaidaHotelOut" class="form-control maskHora" placeholder="00:00" />
+                    <span asp-validation-for="SaidaHotelOut" class="text-danger"></span>
+                </div>
+            </fieldset>
+            <br />
             <div class="form-group">
-                <label asp-for="NumeroVoo" class="control-label"></label>
-                <input asp-for="NumeroVoo" class="form-control" />
-                <span asp-validation-for="NumeroVoo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Companhia" class="control-label"></label>
-                <input asp-for="Companhia" class="form-control" />
-                <span asp-validation-for="Companhia" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataVoo" class="control-label"></label>
-                <input asp-for="DataVoo" class="form-control" />
-                <span asp-validation-for="DataVoo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Saida" class="control-label"></label>
-                <input asp-for="Saida" class="form-control" />
-                <span asp-validation-for="Saida" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="QtdPassageiros" class="control-label"></label>
+                <label asp-for="QtdPassageiros" class="control-label">Qtd Passageiros</label>
                 <input asp-for="QtdPassageiros" class="form-control" />
                 <span asp-validation-for="QtdPassageiros" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Veiculo" class="control-label"></label>
+                <label asp-for="Veiculo" class="control-label">Veículo</label>
                 <input asp-for="Veiculo" class="form-control" />
                 <span asp-validation-for="Veiculo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Observacao" class="control-label"></label>
-                <input asp-for="Observacao" class="form-control" />
-                <span asp-validation-for="Observacao" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Valor" class="control-label"></label>
@@ -68,26 +106,28 @@
                 <span asp-validation-for="Valor" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DataServico" class="control-label"></label>
-                <input asp-for="DataServico" class="form-control" />
-                <span asp-validation-for="DataServico" class="text-danger"></span>
+                <label asp-for="Observacao" class="control-label">Observação</label>
+                <textarea asp-for="Observacao" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Observacao" class="text-danger"></span>
             </div>
+            <input asp-for="DataCadastro" hidden />
             <div class="form-group">
-                <label asp-for="DataCadastro" class="control-label"></label>
-                <input asp-for="DataCadastro" class="form-control" />
-                <span asp-validation-for="DataCadastro" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Salvar" class="btn btn-primary" /> |
+                <a asp-action="Index" class="btn btn-warning">Cancelar</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index" class="btn btn-warning">Voltar</a>
-</div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script>
+    $(document).ready(function () {
+        $(".maskHora").mask("99:99");
+        $(".maskData").mask("99/99/9999");
+        $(".maskNum").mask("99");
+        $(".maskMoney").maskMoney({ prefix: "R$ ", decimal: ",", thousands: "." });
+    });
+</script>
 }

@@ -15,7 +15,8 @@ namespace Web.Migrations
                     id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     nome = table.Column<string>(nullable: false),
-                    telefone = table.Column<string>(nullable: true)
+                    telefone = table.Column<string>(nullable: true),
+                    email = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -68,10 +69,8 @@ namespace Web.Migrations
                     id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     nome = table.Column<string>(nullable: false),
-                    cpf = table.Column<string>(nullable: false),
                     email = table.Column<string>(nullable: true),
-                    telefone1 = table.Column<string>(nullable: true),
-                    telefone2 = table.Column<string>(nullable: true)
+                    telefone = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -193,11 +192,16 @@ namespace Web.Migrations
                     clienteid = table.Column<int>(nullable: false),
                     agenciaid = table.Column<int>(nullable: false),
                     transferin = table.Column<string>(nullable: true),
-                    horariovoo = table.Column<string>(nullable: true),
-                    numerovoo = table.Column<string>(nullable: true),
-                    companhia = table.Column<string>(nullable: true),
+                    horariovooin = table.Column<string>(nullable: true),
+                    numerovooin = table.Column<string>(nullable: true),
+                    companhiain = table.Column<string>(nullable: true),
                     datavoo = table.Column<DateTime>(nullable: false),
-                    saida = table.Column<string>(nullable: true),
+                    transferout = table.Column<string>(nullable: true),
+                    horariovooout = table.Column<string>(nullable: true),
+                    numerovooout = table.Column<string>(nullable: true),
+                    companhiaout = table.Column<string>(nullable: true),
+                    datavooout = table.Column<DateTime>(nullable: false),
+                    saidahotelout = table.Column<string>(nullable: true),
                     qtdpassageiros = table.Column<string>(nullable: true),
                     veiculo = table.Column<string>(nullable: true),
                     observacao = table.Column<string>(nullable: true),
@@ -209,15 +213,15 @@ namespace Web.Migrations
                 {
                     table.PrimaryKey("PK_Servico", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Servico_Cliente_clienteid",
-                        column: x => x.clienteid,
-                        principalTable: "Cliente",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_Servico_Agencia_agenciaid",
                         column: x => x.agenciaid,
                         principalTable: "Agencia",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Servico_Cliente_clienteid",
+                        column: x => x.clienteid,
+                        principalTable: "Cliente",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -260,6 +264,11 @@ namespace Web.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Servico_agenciaid",
+                table: "Servico",
+                column: "agenciaid");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Servico_clienteid",
                 table: "Servico",
                 column: "clienteid");
@@ -267,9 +276,6 @@ namespace Web.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Agencia");
-
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -293,6 +299,9 @@ namespace Web.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Agencia");
 
             migrationBuilder.DropTable(
                 name: "Cliente");

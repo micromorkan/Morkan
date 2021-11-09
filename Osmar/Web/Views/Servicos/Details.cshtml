@@ -9,84 +9,112 @@
     <h4>Detalhes do Serviço</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.TransferIN)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TransferIN)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HorarioVoo)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HorarioVooIn)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HorarioVoo)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HorarioVooIn)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NumeroVoo)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NumeroVooIn)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NumeroVoo)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NumeroVooIn)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Companhia)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CompanhiaIn)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Companhia)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CompanhiaIn)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataVoo)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DataVooIn)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataVoo)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DataVooIn)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Saida)
+       
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TransferOut)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Saida)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TransferOut)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HorarioVooOut)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HorarioVooOut)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NumeroVooOut)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NumeroVooOut)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CompanhiaOut)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CompanhiaOut)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DataVooOut)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DataVooOut)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SaidaHotelOut)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SaidaHotelOut)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.QtdPassageiros)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.QtdPassageiros)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Veiculo)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Veiculo)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Observacao)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Observacao)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Valor)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Valor)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.DataServico)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DataServico)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.DataCadastro)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DataCadastro)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Cliente)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cliente.Cpf)
-        </dd>
     </dl>
 </div>
 <div>

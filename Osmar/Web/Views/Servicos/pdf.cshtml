@@ -7,7 +7,7 @@
         .logo {
             position: absolute;
             margin: auto;
-            top: -1200px;
+            top: -1300px;
             left: 0;
             right: 0;
             bottom: 0;
@@ -50,8 +50,7 @@
             <td>
                 <p style="margin-top: 1em;"><b>Para:</b></p>
                 <p>@Model.Cliente.Nome</p>
-                <p>CPF: @Model.Cliente.Cpf</p>
-                <p>TEL: @Model.Cliente.Telefone1</p>
+                <p>TEL: @Model.Cliente.Telefone</p>
                 <p style="margin-bottom: 1em;">EMAIL: @Model.Cliente.Email</p>
             </td>
         </tr>
@@ -60,13 +59,18 @@
                 <p style="margin-top: 1em;"><b>N° de Passageiros:</b> @Model.QtdPassageiros</p>
                 <p><b>Veículo: @Model.Veiculo</b></p>
                 <br />
-                <p><b>Descrição do Serviço</b></p>
+                <p><b>Descrição do Serviço IN</b></p>
                 <br />
                 <p style="color: red"><b>Transfer IN: </b>@Model.TransferIN</p>
-                <p style="color: red"><b>Transfer OUT: </b>@Model.TransferIN</p>
-                <p style="color: red"><b>Horário do Vôo:</b> @Model.HorarioVoo <b>Nº do Vôo:</b> @Model.NumeroVoo <b>Companhia:</b> @Model.Companhia</p>
-                <p style="color: red"><b>Data:</b> @Model.DataVoo</p>
-                <p style="color: red; margin-bottom: 1em;"><b>Saída:</b> @Model.Saida</p>
+                <p style="color: red"><b>Horário do Vôo:</b> @Model.HorarioVooIn <b>Nº do Vôo:</b> @Model.NumeroVooIn <b>Companhia:</b> @Model.CompanhiaIn</p>
+                <p style="color: red"><b>Data:</b> @Model.DataVooIn</p>
+                <br />
+                <p><b>Descrição do Serviço OUT</b></p>
+                <br />
+                <p style="color: red"><b>Transfer OUT: </b>@Model.TransferOut</p>
+                <p style="color: red"><b>Horário do Vôo:</b> @Model.HorarioVooOut <b>Nº do Vôo:</b> @Model.NumeroVooOut <b>Companhia:</b> @Model.CompanhiaOut</p>
+                <p style="color: red"><b>Data:</b> @Model.DataVooOut</p>
+                <p style="color: red; margin-bottom: 1em;"><b>Saída:</b> @Model.SaidaHotelOut</p>
             </td>
         </tr>
     </table>
@@ -112,16 +116,16 @@
                     Salvador Prime Tour
                 </p>
                 <p>
-                    Rua Itaipú, 81A, Salvador, Bahia,Itacaranha CEP 40713-600
+                    Mussurunga II, Setor I, Nº 27, Salvador, Bahia, CEP 41.480-360
                 </p>
                 <p>
-                    Tel.: +55 71-98796-4840/71 99332-2839/71 3027-2881
+                    Tel.: +55 71 99902-9895 / +55 71 99119-8843
                 </p>
                 <p>
-                    contatos@salvadorviagensvip.com
+                    osmarturismo@yahoo.com.br
                 </p>
                 <p>
-                    CNPJ: 29.156.070/0001-15
+                    CNPJ: 34.419.571/0001-87
                 </p>
             </td>
         </tr>

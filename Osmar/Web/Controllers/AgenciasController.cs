@@ -51,7 +51,7 @@ namespace Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Telefone")] Agencia agencia)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Telefone,Email")] Agencia agencia)
         {
             if (string.IsNullOrWhiteSpace(agencia.Nome))
             {
@@ -82,12 +82,9 @@ namespace Web.Controllers
             return View(agencia);
         }
 
-        // POST: Agencias/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Telefone")] Agencia agencia)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Telefone,Email")] Agencia agencia)
         {
             if (id != agencia.Id)
             {
@@ -142,15 +139,24 @@ namespace Web.Controllers
             return View(agencia);
         }
 
-        // POST: Agencias/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var agencia = await _context.Agencia.FindAsync(id);
-            _context.Agencia.Remove(agencia);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            var servicos = await _context.Servico.Where(x => x.AgenciaId == id).ToListAsync();
+
+            if (servicos.Count() > 0)
+            {
+                TempData["BUSINESSERROR"] = "Não é possível excluir uma Agência que está em uso!";
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                _context.Agencia.Remove(agencia);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
         }
 
         private bool AgenciaExists(int id)

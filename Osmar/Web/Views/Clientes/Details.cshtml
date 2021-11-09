@@ -16,28 +16,16 @@
             @Html.DisplayFor(model => model.Nome)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cpf)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cpf)
-        </dd>
-        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Email)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
+            <a href="mailto:@Model.Email">@Model.Email</a>
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Telefone1)
+            @Html.DisplayNameFor(model => model.Telefone)
         </dt>
         <dd class = "col-sm-10">
-            <a href="tel:@Model.Telefone1">@Model.Telefone1</a>
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Telefone2)
-        </dt>
-        <dd class = "col-sm-10">
-            <a href="tel:@Model.Telefone2">@Model.Telefone2</a>
+            <a href="tel:@Model.Telefone">@Model.Telefone</a>
         </dd>
     </dl>
 </div>

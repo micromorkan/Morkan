@@ -21,23 +21,46 @@ namespace Web.DBModels
         [Column("agenciaid")]
         public int AgenciaId { get; set; }
 
+        #region IN
+
         [Column("transferin")]
         public string TransferIN { get; set; }
 
-        [Column("horariovoo")]
-        public string HorarioVoo { get; set; }
+        [Column("horariovooin")]
+        public string HorarioVooIn { get; set; }
 
-        [Column("numerovoo")]
-        public string NumeroVoo { get; set; }
+        [Column("numerovooin")]
+        public string NumeroVooIn { get; set; }
 
-        [Column("companhia")]
-        public string Companhia { get; set; }
+        [Column("companhiain")]
+        public string CompanhiaIn { get; set; }
 
         [Column("datavoo")]
-        public DateTime DataVoo { get; set; }
+        public DateTime DataVooIn { get; set; }
 
-        [Column("saida")]
-        public string Saida { get; set; }
+        #endregion
+
+        #region OUT
+
+        [Column("transferout")]
+        public string TransferOut { get; set; }
+
+        [Column("horariovooout")]
+        public string HorarioVooOut { get; set; }
+
+        [Column("numerovooout")]
+        public string NumeroVooOut { get; set; }
+
+        [Column("companhiaout")]
+        public string CompanhiaOut { get; set; }
+
+        [Column("datavooout")]
+        public DateTime DataVooOut { get; set; }
+
+        [Column("saidahotelout")]
+        public string SaidaHotelOut { get; set; }
+
+        #endregion
 
         [Column("qtdpassageiros")]
         public string QtdPassageiros { get; set; }

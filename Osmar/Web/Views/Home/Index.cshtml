@@ -13,16 +13,33 @@
     <br />
     @foreach (var item in Model)
     {
-        <div class="card" style="width: 100%; box-shadow: 0 0 10px 0 rgba(100, 100, 100, 0.50);">
-            <div class="card-body">
-                <h5 class="card-title">@item.Cliente.Nome</h5>
-                <h6 class="card-subtitle mb-2 text-muted">@item.TransferIN - (@item.Companhia)</h6>
-                <p class="card-subtitle mb-2 text-muted">Nº Passageiros: @item.QtdPassageiros, Horário: @item.HorarioVoo, Nº:@item.NumeroVoo </p>
-                <p class="card-text">Observação: @item.Observacao</p>
-                <a asp-controller="Servicos" asp-action="Edit" asp-route-id="@item.Id" class="card-link">Alterar Data</a>
-                <a asp-controller="Servicos" asp-action="Pdf" asp-route-id="@item.Id" target="_blank" class="card-link" style="float: right">Gerar Voucher</a>
+        if (item.DataVooIn.Date == DateTime.Now.Date)
+        {
+            <div class="card" style="width: 100%; box-shadow: 0 0 10px 0 rgba(100, 100, 100, 0.50); background-color: lightgreen;">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Cliente.Nome</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@item.TransferIN - (@item.CompanhiaIn)</h6>
+                    <p class="card-subtitle mb-2 text-muted">Nº Passageiros: @item.QtdPassageiros, Horário: @item.HorarioVooIn, Nº:@item.NumeroVooIn </p>
+                    <p class="card-text">Observação: @item.Observacao</p>
+                    <a asp-controller="Servicos" asp-action="Edit" asp-route-id="@item.Id" class="card-link">Alterar Data</a>
+                    <a asp-controller="Servicos" asp-action="Pdf" asp-route-id="@item.Id" target="_blank" class="card-link" style="float: right">Gerar Voucher</a>
+                </div>
             </div>
-        </div>
-        <br />
+            <br />
+        }
+        else if (item.DataVooOut.Date == DateTime.Now.Date)
+        {
+            <div class="card" style="width: 100%; box-shadow: 0 0 10px 0 rgba(100, 100, 100, 0.50); background-color: yellow;">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Cliente.Nome</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@item.TransferOut - (@item.CompanhiaOut)</h6>
+                    <p class="card-subtitle mb-2 text-muted">Nº Passageiros: @item.QtdPassageiros, Horário: @item.HorarioVooOut, Nº:@item.NumeroVooOut </p>
+                    <p class="card-text">Observação: @item.Observacao</p>
+                    <a asp-controller="Servicos" asp-action="Edit" asp-route-id="@item.Id" class="card-link">Alterar Data</a>
+                    <a asp-controller="Servicos" asp-action="Pdf" asp-route-id="@item.Id" target="_blank" class="card-link" style="float: right">Gerar Voucher</a>
+                </div>
+            </div>
+            <br />
+        }
     }
 </div>

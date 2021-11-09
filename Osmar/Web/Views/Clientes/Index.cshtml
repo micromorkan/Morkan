@@ -17,11 +17,8 @@
                 @Html.DisplayNameFor(model => model.Nome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Telefone1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefone2)
-            </th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>            
             <th class="text-center">
                 @Html.DisplayName("Ação")
             </th>
@@ -34,15 +31,11 @@
                 @Html.DisplayFor(modelItem => item.Nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Telefone1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefone2)
-            </td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>            
             <td class="text-center">
                 <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> <br />
-                <a asp-action="Details" asp-route-id="@item.Id">Detalhar</a> <br />
-                <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhar</a>
             </td>
         </tr>
 }

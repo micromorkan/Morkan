@@ -18,25 +18,15 @@
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Cpf" class="control-label"></label>
-                <input asp-for="Cpf" class="form-control maskCpf" required />
-                <span asp-validation-for="Cpf" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Telefone1" class="control-label"></label>
-                <input asp-for="Telefone1" class="form-control maskTel" required />
-                <span asp-validation-for="Telefone1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Telefone2" class="control-label"></label>
-                <input asp-for="Telefone2" class="form-control maskTel" />
-                <span asp-validation-for="Telefone2" class="text-danger"></span>
-            </div>
+                <label asp-for="Telefone" class="control-label"></label>
+                <input asp-for="Telefone" class="form-control maskTel" required />
+                <span asp-validation-for="Telefone" class="text-danger"></span>
+            </div>            
             <div class="form-group">
                 <input type="submit" value="Salvar" class="btn btn-primary" /> |
                 <a asp-action="Index" class="btn btn-warning">Cancelar</a>
@@ -45,16 +35,12 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index" class="btn btn-warning">Voltar</a>
-</div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 <script>
     $(document).ready(function () {
         $(".maskTel").mask("(99)99999-9999");
-        $(".maskCpf").mask("999.999.999-99");
+        //$(".maskCpf").mask("999.999.999-99");
     });
 </script>
 }

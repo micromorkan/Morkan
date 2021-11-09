@@ -17,17 +17,10 @@ namespace Web.DBModels
         [Required]
         public string Nome { get; set; }
 
-        [Column("cpf")]
-        [Required]
-        public string Cpf { get; set; }
-        
         [Column("email")]
         public string Email { get; set; }
 
-        [Column("telefone1")]
-        public string Telefone1 { get; set; }
-
-        [Column("telefone2")]
-        public string Telefone2 { get; set; }
+        [Column("telefone")]
+        public string Telefone { get; set; }
     }
 }

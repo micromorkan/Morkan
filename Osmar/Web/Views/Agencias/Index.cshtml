@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var message = TempData["BUSINESSERROR"] ?? string.Empty;
 }
 
 <h1 class="text-center">Lista de Agências</h1>
@@ -40,3 +41,9 @@
 }
     </tbody>
 </table>
+
+<script>
+    if ('@message' !== '') {
+        alert('@Html.Raw(message)');
+    }
+</script>

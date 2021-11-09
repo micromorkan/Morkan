@@ -511,4 +511,3 @@ D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Syste
 D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 D:\Morkan\Osmar\Web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
-D:\Morkan\Osmar\Web\obj\Debug\netcoreapp3.1\Razor\Views\Servicos\Pdf - Copy.cshtml.g.cs

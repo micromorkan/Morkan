@@ -30,7 +30,7 @@ namespace Web.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Servico.Include(s => s.Cliente);
-            return View(await applicationDbContext.Where(x => x.DataServico.Date == DateTime.Now.Date).OrderBy(o => o.DataServico).ToListAsync());
+            return View(await applicationDbContext.Where(x => x.DataServico.Date == DateTime.Now.Date || x.DataVooIn.Date == DateTime.Now.Date || x.DataVooOut.Date == DateTime.Now.Date).OrderBy(o => o.DataServico).ToListAsync());
         }
 
         public IActionResult Privacy()
